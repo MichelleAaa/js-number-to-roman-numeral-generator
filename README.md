@@ -29,9 +29,9 @@ If you have successfully entered a number between 1 and 3999, the roman numeral 
 
 ## Launch Instructions
 
-Clone this repository to your local machine. 
+Clone or download this repository to your local machine. 
 
-Double click on the index.html file. The application will launch in your web browser.
+In the file folder, double click on the index.html file. The application will launch in your web browser.
 
 **Please note that this application requires an internet connection.  
 
