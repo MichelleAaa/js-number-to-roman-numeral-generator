@@ -50,13 +50,22 @@
             filter: brightness(1.1);
         }
 
+        .line-add {
+            border-bottom: 1px dotted lightgray;
+            margin-bottom: 25px;
+        }
+
         .roman {
             font-size: 1.3rem;
-            /* text-shadow: 0 1px 3px rgb(216, 206, 206); */
             color: rgb(114, 102, 102);
-            /* color: rgb(96, 128, 170); */
             font-weight: bold;
         }
+
+        .error {
+            color: rgb(152, 8, 8);
+            font-weight: bold;
+        }
+
     </style>
 
 </head>
@@ -70,7 +79,7 @@
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-12 pt-4 pb-2">
                             <h1 class="pb-2">Number to Roman Numeral</h1>
-                            <p>Please enter a number between 1-3999:</p>
+                            <p>Please enter a number between 1 - 3999:</p>
                         </div>
                     </div>
                     <form>
@@ -85,8 +94,9 @@
                             </div>
                         </div>
                     </form>
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-11 text-center">
+                    <div class="row d-flex justify-content-center pt-3 pb-3">
+                        <div class="col-10 text-center">
+                            <div class="line"></div>
                             <p class="answer"></p>
                             <p class="roman pb-2"></p>
                         </div>
@@ -106,6 +116,7 @@
     const submit = document.querySelector('button');
     const ans = document.querySelector(".answer");
     const roman = document.querySelector(".roman");
+    const line = document.querySelector(".line");
 
     submit.addEventListener("click", intToRoman);
 
@@ -117,13 +128,16 @@
         let val = "";
         
         if (num == "") {
-            ans.textContent = `No number was supplied. Please select a number between 1-3999.`;
+            line.classList.add("line-add");
+            ans.innerHTML = "<span class='error'>No number was supplied.</span> Please select a number between 1 - 3999.";
             inputEl.value = "";
             roman.textContent = "";
             return;
         }
         if (num > 3999 || num <= 0) {
-            ans.textContent = `You entered ${ogNum}. Please select a number between 1-3999.`;
+            line.classList.add("line-add");
+            ans.innerHTML = 
+            `<span class='error'>You entered ${ogNum}.</span> Please select a number between 1 - 3999.`;
             inputEl.value = "";
             roman.textContent = "";
             return;
@@ -190,6 +204,7 @@
                 val += "I";
             }
         }
+        line.classList.add("line-add");
         ans.textContent = `The Roman Numeral for ${ogNum} is:`;
         roman.textContent = val;
 
@@ -198,5 +213,4 @@
     </script>
 
 </body>
-
 </html>
